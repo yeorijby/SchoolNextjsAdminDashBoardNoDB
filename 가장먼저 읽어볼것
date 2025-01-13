@@ -1,0 +1,56 @@
+
+https://www.youtube.com/watch?v=myYlGLFxZas
+
+
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote remove origin
+git remote add origin https://github.com/yeorijby/SchoolNextjsAdminDashBoardNoDB.git
+git push -u origin main
+
+////// 무조건 pull
+//local의 파일들은 모두 날라가도 문제 없는 상황에서 "나는 그저 원격 git 저장소의 main를 내 local로 덮어 씌우고 싶다." 하는 상황에서 사용
+git fetch --all
+git reset --hard origin/main
+git pull origin main
+
+
+
+//==================================================================================================================
+// 각 파일들 임포트 할때 경로를 판단하기 어려우면 몇가지 동작만 해주면 모든 경로에 @로 사용할 수 있도록 하는 방법
+// 이것은 TypeScript 일 때 가능한 부분임!!
+//==================================================================================================================
+vite.config.ts 에다가 
+맨처음에 import path from 'path' 이거하고 
+
+  resolve:{
+    alias : [{find:"@", replacement: path.resolve(__dirname, "src")}]
+  }
+이거를 내용에 집어넣고... 
+
+
+
+tsconfig.json 에서 
+  "compilerOptions": 의 맨처음 에 
+
+    "paths" :{
+      "@/*":["./src/*"]
+    },
+이거를 집어 넣는다. 
+
+
+
+
+이렇게 하면 각 파일에서 SRC 밑에 있는 경로는 모두 @로 치환이 가능하다. 
+EX : main.tsx에서 
+import App from './App.tsx'
+되어 있던 것을 
+import App from '@/App.tsx'로 바꿀수 있다. 
+
+//------------------------------------------------------------------------------------------------------------------
+
+
+
+

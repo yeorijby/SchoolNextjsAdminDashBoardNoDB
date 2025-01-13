@@ -13,6 +13,14 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors : {
+        yeoriSky:"#C3EBFA",
+        yeoriSkyLight:"#C3EBFA",
+        yeoriPurple:"#CFCEFF",
+        yeoriPurpleLight:"#F1F0FF",
+        yeoriYellow:"#FAE27C",
+        yeoriYellowLight:"#FEFCE8",
+      }
     },
   },
   plugins: [],
