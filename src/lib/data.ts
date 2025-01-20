@@ -917,147 +917,189 @@ export const announcementsData = [
 
 
 // YOU SHOULD CHANGE THE DATES OF THE EVENTS TO THE CURRENT DATE TO SEE THE EVENTS ON THE CALENDAR
+const today = new Date();
+const YEAR = today.getFullYear();
+const MONTH = today.getMonth(); 
+const DAY = today.getDate();
+const WEEKDAY = today.getDay();
+
+let dayMon = 0;
+let dayTue = 1;
+let dayWed = 2;
+let dayThe = 3;
+let dayFri = 4;
+
+let opreator = 0;
+
+switch (WEEKDAY) {
+  case 7: // 일
+  case 1: // 월
+    break;
+  case 2: // 화
+    opreator = -1;
+    break;
+  case 3: // 수
+    opreator = -2;
+  break;
+  case 4: // 목
+    opreator = -3;
+  break;
+  case 5: // 금
+  case 6: // 토
+    opreator = -4;
+  break;
+}
+
+dayMon += DAY + opreator;
+dayTue += DAY + opreator;
+dayWed += DAY + opreator;
+dayThe += DAY + opreator;
+dayFri += DAY + opreator;
+
+console.log(YEAR, MONTH+1); // 쓸대만 +1해줌 (MONTH 가 0부터 시작함!)
+console.log(dayMon, dayTue, dayWed, dayThe, dayFri);
+
 export const calendarEvents = [
   {
     title: "Math",
     allDay: false,
-    start: new Date(2024, 7, 12, 8, 0),
-    end: new Date(2024, 7, 12, 8, 45),
+    start     : new Date(YEAR, MONTH, dayMon, 8, 0),
+    end       : new Date(YEAR, MONTH, dayMon, 8, 45),
   },
   {
     title: "English",
     allDay: false,
-    start: new Date(2024, 7, 12, 9, 0),
-    end: new Date(2024, 7, 12, 9, 45),
+    start     : new Date(YEAR, MONTH, dayMon, 9, 0),
+    end       : new Date(YEAR, MONTH, dayMon, 9, 45),
   },
   {
     title: "Biology",
     allDay: false,
-    start: new Date(2024, 7, 12, 10, 0),
-    end: new Date(2024, 7, 12, 10, 45),
+    start     : new Date(YEAR, MONTH, dayMon, 10, 0),
+    end       : new Date(YEAR, MONTH, dayMon, 10, 45),
   },
   {
     title: "Physics",
     allDay: false,
-    start: new Date(2024, 7, 12, 11, 0),
-    end: new Date(2024, 7, 12, 11, 45),
+    start     : new Date(YEAR, MONTH, dayMon, 11, 0),
+    end       : new Date(YEAR, MONTH, dayMon, 11, 45),
   },
   {
     title: "Chemistry",
     allDay: false,
-    start: new Date(2024, 7, 12, 13, 0),
-    end: new Date(2024, 7, 12, 13, 45),
+    start     : new Date(YEAR, MONTH, dayMon, 13, 0),
+    end       : new Date(YEAR, MONTH, dayMon, 13, 45),
   },
   {
     title: "History",
     allDay: false,
-    start: new Date(2024, 7, 12, 14, 0),
-    end: new Date(2024, 7, 12, 14, 45),
+    start     : new Date(YEAR, MONTH, dayMon, 14, 0),
+    end       : new Date(YEAR, MONTH, dayMon, 14, 45),
   },
   {
     title: "English",
     allDay: false,
-    start: new Date(2024, 7, 13, 9, 0),
-    end: new Date(2024, 7, 13, 9, 45),
+    start     : new Date(YEAR, MONTH, dayTue, 9, 0),
+    end       : new Date(YEAR, MONTH, dayTue, 9, 45),
   },
   {
     title: "Biology",
     allDay: false,
-    start: new Date(2024, 7, 13, 10, 0),
-    end: new Date(2024, 7, 13, 10, 45),
+    start     : new Date(YEAR, MONTH, dayTue, 10, 0),
+    end       : new Date(YEAR, MONTH, dayTue, 10, 45),
   },
   {
     title: "Physics",
     allDay: false,
-    start: new Date(2024, 7, 13, 11, 0),
-    end: new Date(2024, 7, 13, 11, 45),
+    start     : new Date(YEAR, MONTH, dayTue, 11, 0),
+    end       : new Date(YEAR, MONTH, dayTue, 11, 45),
   },
 
   {
     title: "History",
     allDay: false,
-    start: new Date(2024, 7, 13, 14, 0),
-    end: new Date(2024, 7, 13, 14, 45),
+    start     : new Date(YEAR, MONTH, dayTue, 14, 0),
+    end       : new Date(YEAR, MONTH, dayTue, 14, 45),
   },
   {
     title: "Math",
     allDay: false,
-    start: new Date(2024, 7, 14, 8, 0),
-    end: new Date(2024, 7, 14, 8, 45),
+    start     : new Date(YEAR, MONTH, dayWed, 8, 0),
+    end       : new Date(YEAR, MONTH, dayWed, 8, 45),
   },
   {
     title: "Biology",
     allDay: false,
-    start: new Date(2024, 7, 14, 10, 0),
-    end: new Date(2024, 7, 14, 10, 45),
+    start     : new Date(YEAR, MONTH, dayWed, 10, 0),
+    end       : new Date(YEAR, MONTH, dayWed, 10, 45),
   },
 
   {
     title: "Chemistry",
     allDay: false,
-    start: new Date(2024, 7, 14, 13, 0),
-    end: new Date(2024, 7, 14, 13, 45),
+    start     : new Date(YEAR, MONTH, dayWed, 13, 0),
+    end       : new Date(YEAR, MONTH, dayWed, 13, 45),
   },
   {
     title: "History",
     allDay: false,
-    start: new Date(2024, 7, 14, 14, 0),
-    end: new Date(2024, 7, 13, 14, 45),
+    start     : new Date(YEAR, MONTH, dayWed, 14, 0),
+    end       : new Date(YEAR, MONTH, dayWed, 14, 45),
   },
   {
     title: "English",
     allDay: false,
-    start: new Date(2024, 7, 15, 9, 0),
-    end: new Date(2024, 7, 15, 9, 45),
+    start     : new Date(YEAR, MONTH, dayThe, 9, 0),
+    end       : new Date(YEAR, MONTH, dayThe, 9, 45),
   },
   {
     title: "Biology",
     allDay: false,
-    start: new Date(2024, 7, 15, 10, 0),
-    end: new Date(2024, 7, 15, 10, 45),
+    start     : new Date(YEAR, MONTH, dayThe, 10, 0),
+    end       : new Date(YEAR, MONTH, dayThe, 10, 45),
   },
   {
     title: "Physics",
     allDay: false,
-    start: new Date(2024, 7, 15, 11, 0),
-    end: new Date(2024, 7, 15, 11, 45),
+    start     : new Date(YEAR, MONTH, dayThe, 11, 0),
+    end       : new Date(YEAR, MONTH, dayThe, 11, 45),
   },
 
   {
     title: "History",
     allDay: false,
-    start: new Date(2024, 7, 15, 14, 0),
-    end: new Date(2024, 7, 15, 14, 45),
+    start     : new Date(YEAR, MONTH, dayThe, 14, 0),
+    end       : new Date(YEAR, MONTH, dayThe, 14, 45),
   },
   {
     title: "Math",
     allDay: false,
-    start: new Date(2024, 7, 16, 8, 0),
-    end: new Date(2024, 7, 16, 8, 45),
+    start     : new Date(YEAR, MONTH, dayFri, 8, 0),
+    end       : new Date(YEAR, MONTH, dayFri, 8, 45),
   },
   {
     title: "English",
     allDay: false,
-    start: new Date(2024, 7, 16, 9, 0),
-    end: new Date(2024, 7, 16, 9, 45),
+    start     : new Date(YEAR, MONTH, dayFri, 9, 0),
+    end       : new Date(YEAR, MONTH, dayFri, 9, 45),
   },
 
   {
     title: "Physics",
     allDay: false,
-    start: new Date(2024, 7, 16, 11, 0),
-    end: new Date(2024, 7, 16, 11, 45),
+    start     : new Date(YEAR, MONTH, dayFri, 11, 0),
+    end       : new Date(YEAR, MONTH, dayFri, 11, 45),
   },
   {
     title: "Chemistry",
     allDay: false,
-    start: new Date(2024, 7, 16, 13, 0),
-    end: new Date(2024, 7, 16, 13, 45),
+    start     : new Date(YEAR, MONTH, dayFri, 13, 0),
+    end       : new Date(YEAR, MONTH, dayFri, 13, 45),
   },
   {
     title: "History",
     allDay: false,
-    start: new Date(2024, 7, 16, 14, 0),
-    end: new Date(2024, 7, 16, 14, 45),
+    start     : new Date(YEAR, MONTH, dayFri, 14, 0),
+    end       : new Date(YEAR, MONTH, dayFri, 14, 45),
   },
 ];
