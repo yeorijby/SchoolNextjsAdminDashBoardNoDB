@@ -956,8 +956,8 @@ dayWed += DAY + opreator;
 dayThe += DAY + opreator;
 dayFri += DAY + opreator;
 
-console.log(YEAR, MONTH+1); // 쓸대만 +1해줌 (MONTH 가 0부터 시작함!)
-console.log(dayMon, dayTue, dayWed, dayThe, dayFri);
+// console.log(YEAR, MONTH+1); // 쓸대만 +1해줌 (MONTH 가 0부터 시작함!)
+// console.log(dayMon, dayTue, dayWed, dayThe, dayFri);
 
 export const calendarEvents = [
   {
