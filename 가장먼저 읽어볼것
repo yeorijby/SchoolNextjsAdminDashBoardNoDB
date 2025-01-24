@@ -52,6 +52,7 @@ import App from '@/App.tsx'로 바꿀수 있다.
 //------------------------------------------------------------------------------------------------------------------
 
 
+
 // 스니펫 정리
 {
 	"comp": {
@@ -96,4 +97,41 @@ import App from '@/App.tsx'로 바꿀수 있다.
 }
 
 
+
+//==================================================================================================================
+// prisma를 사용하기 위해서
+//==================================================================================================================
+npm init -y
+npm install prisma --save-dev
+npm install @prisma/client
+npx prisma init
+
+[typescript를 써야 의미가 있으므로 Typescript를 사용하기 위해서]
+npm install typescript-node @type/node --save-dev
+npx tsc --init
+
+[모델을 파일로 만들어주는것]
+npx prisma migrate dev --name init
+
+
+[schema.prisma에 모델 정의 하고 .env에 db url 저장]
+[기존에 쓰던 DB로 모델을 가져올때.. ]
+npx prisma db full
+
+[DB 에 모델내용을 추가 .. ]
+npx prisma db fush
+
+[Docker내의 postgresql 정보파일 위치]
+/var/lib/postgresql/data/pg_hba.conf
+
+[이렇게 하고 나서 아무 TS 파일에서 ... 다음과 같이 사용 가능]
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
+
+async function main(){
+	let result = await prisma.person.findMany();
+	console.log(result);
+}
+
+//------------------------------------------------------------------------------------------------------------------
 
