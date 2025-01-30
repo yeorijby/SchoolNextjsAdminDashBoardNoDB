@@ -10,8 +10,9 @@ generator client {
 
 datasource db {
   provider          = "postgresql"
-  url               = env("DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+//  url               = env("DATABASE_URL")
+  url               = "postgresql://yeorijby:yeori1010@localhost:15432/school"
+//  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 //================================================================
@@ -42,7 +43,7 @@ model Student {
   name      String
   surname   String
   email     String?  @unique
-  phone     String   @unique
+  phone     String?  @unique
   address   String
   img       String?
   bloodType String
@@ -57,6 +58,7 @@ model Student {
 
   attendances Attendance[]
   results     Result[]
+  birthday    DateTime
 }
 
 model Teacher {
@@ -65,7 +67,7 @@ model Teacher {
   name      String
   surname   String
   email     String?   @unique
-  phone     String    @unique
+  phone     String?   @unique
   address   String
   img       String?
   bloodType String
@@ -74,6 +76,7 @@ model Teacher {
   subjects  Subject[]
   lessons   Lesson[]
   classes   Class[]
+  birthday  DateTime
 }
 
 model Parent {
@@ -101,8 +104,8 @@ model Class {
   name     String @unique
   capacity Int
 
-  superviserId  String
-  superviser    Teacher        @relation(fields: [superviserId], references: [id])
+  superviserId  String?
+  superviser    Teacher?        @relation(fields: [superviserId], references: [id])
   gradeId       Int
   grade         Grade          @relation(fields: [gradeId], references: [id])
   lessens       Lesson[]
@@ -185,8 +188,8 @@ model Event {
   id          Int      @id @default(autoincrement())
   title       String
   description String
-  startDate   DateTime
-  endDate     DateTime
+  startTime   DateTime
+  endTime     DateTime
   classId     Int?
   class       Class?   @relation(fields: [classId], references: [id])
 }

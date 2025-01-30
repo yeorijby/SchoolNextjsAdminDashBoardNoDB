@@ -6,8 +6,8 @@ services:
     container_name: postgres
     restart: always
     environment:
-      POSTGRES_USER: lamadev
-      POSTGRES_PASSWORD: lama123456
+      POSTGRES_USER: yeorijby
+      POSTGRES_PASSWORD: yeori1010
       POSTGRES_DB: school
     ports:
       - '5432:5432'
@@ -16,8 +16,8 @@ services:
     container_name: postgres-shadow
     restart: always
     environment:
-      POSTGRES_USER: lamadev
-      POSTGRES_PASSWORD: lama123456
+      POSTGRES_USER: yeorijby
+      POSTGRES_PASSWORD: yeori1010
       POSTGRES_DB: school
     ports:
       - '5433:5433'
@@ -35,4 +35,5 @@ services:
       - postgres
 
 volumes:
-  postgres:
+  postgres_data:
+    driver:local

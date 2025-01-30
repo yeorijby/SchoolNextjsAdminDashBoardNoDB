@@ -124,6 +124,25 @@ npx prisma db fush
 [Docker내의 postgresql 정보파일 위치]
 /var/lib/postgresql/data/pg_hba.conf
 
+[프리즈마 스투디오를 열때]
+npx prisma studio
+
+[시드파일을 생성하기 위해서]
+1. package.json에 다음을 추가하고
+  "prisma" : {
+    "seed" : "ts-node prisma/seed.ts"
+  },
+1.1. 하지만 Next.js에서는 다음으로 수정해야 한다. 
+  "prisma" : {
+    "seed" : "ts-node --compiler-options {\"module\":\"CommonJs\"} prisma/seed.ts"
+  },
+
+2. 다음의 명령어를 실행한다. 
+	npm install -d ts-node
+
+npx prisma db seed
+
+
 [이렇게 하고 나서 아무 TS 파일에서 ... 다음과 같이 사용 가능]
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
