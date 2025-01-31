@@ -10,6 +10,7 @@ generator client {
 
 datasource db {
   provider          = "postgresql"
+  // prisma의 오류로 보이는데 .env 파일을 활용할수 없고 직접 URL을 입력해야함!
 //  url               = env("DATABASE_URL")
   url               = "postgresql://yeorijby:yeori1010@localhost:15432/school"
 //  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")

@@ -1,6 +1,3 @@
-// // 클라이언트 사이드 렌더링 (CSR): use client 지시문을 사용하는 컴포넌트는 브라우저에서 동적으로 렌더링된다.
-// // 이는 사용자 상호작용에 의존하는 동적인 기능을 구현할 때 유용하다.
-// "use client"
 import FormModal from "@/components/FormModal"
 import Pagination from "@/components/Pagination"
 import Table from "@/components/Table"
@@ -105,43 +102,9 @@ const TeacherListPage = async ({
 }) => {
   // console.log(searchParams)
 
-  // ✅ 이게 원본
-  // const { page, ...queryParams } = searchParams;
-  // const p = page ? parseInt(page) : 1;
+  const { page, ...queryParams } = searchParams;
 
-
-  // // // // // // URLSearchParams 객체로 변환
-  // // // // // const params = new URLSearchParams(searchParams);
-  
-  // // // // // // 페이지 정보 가져오기
-  // // // // // const page = params.get("page");
-
-
-  // // // // const p = searchParams.page ? parseInt(searchParams.page) || 1 : 1;
-
-
-  // // // // searchParams.page를 안전하게 변환
-  // // // const page = await Promise.resolve(searchParams.page);
-  // // // const p = page ? parseInt(page) || 1 : 1;
-
-  // // // searchParams를 안전한 객체로 변환
-  // // const params = Object.fromEntries(searchParams !== undefined ? searchParams.entries() : null);
-
-  // // // page 값 변환 (undefined이면 1로 설정)
-  // // const p = params.page ? parseInt(params.page) || 1 : 1;
-
-  // // page 값을 안전하게 변환 (없으면 기본값 1)
-  // const p = searchParams.page ? parseInt(searchParams.page) || 1 : 1;
-
-
-  // ✅ searchParams를 비동기적으로 가져오기
-  const params = await searchParams;
-
-  // ✅ page 값을 안전하게 변환 (없으면 기본값 `1`)
-  const p = params.page ? parseInt(params.page) || 1 : 1;
-
-
-
+  const p = page ? parseInt(page) : 1;
 
   const [data, count] = await prisma.$transaction([
      prisma.teacher.findMany({
@@ -181,7 +144,7 @@ const TeacherListPage = async ({
         </div>
       </div>
       {/* LIST */}
-      <Table data={data} columns={columns} renderRow={renderRow} />
+      <Table data={teachersData} columns={columns} renderRow={renderRow} />
       {/* PAGINATION */}
       <Pagination page={p} count={count}/>
     </div>
