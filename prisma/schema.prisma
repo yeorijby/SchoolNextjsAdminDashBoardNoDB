@@ -110,7 +110,7 @@ model Class {
   gradeId       Int
   grade         Grade          @relation(fields: [gradeId], references: [id])
   lessens       Lesson[]
-  student       Student[]
+  students      Student[]
   events        Event[]
   announcements Announcement[]
 }

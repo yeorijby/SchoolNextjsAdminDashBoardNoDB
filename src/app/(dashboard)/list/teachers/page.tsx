@@ -1,6 +1,3 @@
-// // 클라이언트 사이드 렌더링 (CSR): use client 지시문을 사용하는 컴포넌트는 브라우저에서 동적으로 렌더링된다.
-// // 이는 사용자 상호작용에 의존하는 동적인 기능을 구현할 때 유용하다.
-// "use client"
 import FormModal from "@/components/FormModal"
 import Pagination from "@/components/Pagination"
 import Table from "@/components/Table"
@@ -8,7 +5,7 @@ import TableSearch from "@/components/TableSearch"
 import { role, teachersData } from "@/lib/data"
 import prisma from "@/lib/prisma"
 import { ITEM_PER_PAGE } from "@/lib/settings"
-import { Class, Lesson, Subject, Teacher } from "@prisma/client"
+import { Class, Lesson, Prisma, Subject, Teacher } from "@prisma/client"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -138,13 +135,37 @@ const TeacherListPage = async ({
   const params = await searchParams;
 
   // ✅ page 값을 안전하게 변환 (없으면 기본값 `1`)
-  const p = params.page ? parseInt(params.page) || 1 : 1;
+  // const p = params.page ? parseInt(params.page) || 1 : 1;
+  const { page, ...queryParams } = params;
+  const p = page ? parseInt(page) || 1 : 1;
 
+  const query : Prisma.TeacherWhereInput = {};
+  // URL PARAMS CONDITION
+  if (queryParams){
+    for(const [key,value] of Object.entries(queryParams)){
+      if (value !== undefined){
+        switch(key){
+          case "classId" :
+            query.lessons = {
+              some:{
+                classId:parseInt(value),
+              },
+            };
+            break;
+          case "search":
+            query.name = {contains:value, mode:"insensitive"}
+            break;
+          default:
+            break;
 
-
+        }
+      }  
+    }
+  }
 
   const [data, count] = await prisma.$transaction([
      prisma.teacher.findMany({
+      where : query,
       include : {
         subjects : true, 
         classes : true,
@@ -152,7 +173,7 @@ const TeacherListPage = async ({
       take : ITEM_PER_PAGE,
       skip : ITEM_PER_PAGE * (p - 1),
     }),
-     prisma.teacher.count(),
+     prisma.teacher.count({where:query}),
   ])
     
   // const count = ;

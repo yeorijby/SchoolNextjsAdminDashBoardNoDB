@@ -140,6 +140,11 @@ npx prisma studio
 2. 다음의 명령어를 실행한다. 
 	npm install -d ts-node
 
+[만약 schema.prisma의 값이 바뀌었다면 해당 값을 DB에 밀어넣을 때]
+npx prisma db push --force-reset
+
+[seed.ts 파일을 통해서 데이터 시드를 실행하는 명령]
+// 데이터 시드 : 초기 데이터나 테스트 데이터를 생성하고 채우는 과정
 npx prisma db seed
 
 
