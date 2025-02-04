@@ -164,3 +164,7 @@ async function main(){
 
 //------------------------------------------------------------------------------------------------------------------
 
+// .env에 추가 되어져야 할 것들 
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_cHJvbW90ZWQteWV0aS0zNC5jbGVyay5hY2NvdW50cy5kZXYk
+CLERK_SECRET_KEY=sk_test_sruE46CkK5i5ynpCsaUYGGOvv0i3OvJMV2kYVlEvNE
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/

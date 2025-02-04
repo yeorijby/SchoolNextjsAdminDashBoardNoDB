@@ -13,7 +13,7 @@ const LoginPage = () => {
 
     const router = useRouter();
 
-    // console.log(user);
+    //console.log(user);
     useEffect(()=>{
         const role = user?.publicMetadata.role;
 
