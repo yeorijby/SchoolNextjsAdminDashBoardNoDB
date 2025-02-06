@@ -12,15 +12,18 @@ const matchers = Object.keys(routeAccessMap).map(route=>({
 export default clerkMiddleware(async (auth, req) => {
   // if (isProtectedRoute(req)) await auth.protect()
 
-  const { sessionClaims } = auth();
+  const { sessionClaims } = await auth();
 
-  const role = (sessionClaims?.memadata as {role?: string})?.role;
+  const role = (sessionClaims?.metadata as { role?: string })?.role;
+  // const role = (sessionClaims?.metadata as { role?: string })?.role ?? "/";
 
-  for (const {matcher, allowedRoles} of matchers){
-    if(matcher(req) && !allowedRoles.includes())
-      return NextResponse.redirect(new URL(`/`))
+  for (const {matcher, allowedRoles} of matchers){  
+    if(matcher(req) && !allowedRoles.includes(role!)){
+    // if(matcher(req.nextUrl.pathname) && !allowedRoles.includes(role)){
+      return NextResponse.redirect(new URL(`/${role}`, req.nextUrl.origin))
+    }
   }
-})
+});
 
 export const config = {
   matcher: [
@@ -30,3 +33,5 @@ export const config = {
     '/(api|trpc)(.*)',
   ],
 };
+
+   

@@ -168,3 +168,28 @@ async function main(){
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_cHJvbW90ZWQteWV0aS0zNC5jbGVyay5hY2NvdW50cy5kZXYk
 CLERK_SECRET_KEY=sk_test_sruE46CkK5i5ynpCsaUYGGOvv0i3OvJMV2kYVlEvNE
 NEXT_PUBLIC_CLERK_SIGN_IN_URL=/
+
+
+
+
+
+
+
+import { Stage, Layer, Rect, Text } from "react-konva";
+
+const OfficeLayout = () => {
+  return (
+    <Stage width={800} height={600}>
+      <Layer>
+        {/* 책상 */}
+        <Rect x={50} y={50} width={100} height={50} fill="blue" draggable />
+        <Text x={70} y={65} text="Desk 1" fill="white" />
+
+        {/* 의자 */}
+        <Rect x={120} y={100} width={30} height={30} fill="gray" draggable />
+      </Layer>
+    </Stage>
+  );
+};
+
+export default OfficeLayout;
