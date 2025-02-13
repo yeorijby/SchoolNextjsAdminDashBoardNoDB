@@ -21,6 +21,11 @@ git fetch --all
 git reset --hard origin/main
 git pull origin main
 
+이번에 풀할때 반드시 받아야 함 - 받고 나면 지울 것!
+npx prisma db push --force-reset
+npx prisma db seed
+
+
 
 
 //==================================================================================================================
